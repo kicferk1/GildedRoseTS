@@ -1,4 +1,7 @@
 export class Item {
+  /**
+   * Originally not supposed to edit this, but ts won't shut up about types of fields so it has to be done
+   */
   name:string;
   sellIn;quality: number;
   constructor(name, sellIn, quality){
@@ -17,7 +20,6 @@ export class Shop {
     for (var i = 0; i < this.items.length; i++) {
       this.items[i] = this.updateItem(this.items[i]);
     }
-
     return this.items;
   }
   updateItem(item:Item):Item {
@@ -98,6 +100,10 @@ export class Shop {
   }
 
   specialItem(item:Item):boolean{
+    /**
+     * To check if item should degrade in a default way
+     * Passes whole item despite using just name cause in principle quality/sellIn can also influence defaultness
+     */
     return (
       item.name == 'Aged Brie' || 
       item.name == 'Backstage passes to a TAFKAL80ETC concert' || 
